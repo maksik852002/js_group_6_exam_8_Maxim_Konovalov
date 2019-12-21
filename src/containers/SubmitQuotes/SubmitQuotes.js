@@ -8,7 +8,7 @@ const SubmitQuotes = (props) => {
       <NavBar/>
       <div className="container">
         <SubmitForm
-          history = {props.history}
+          history={props.history}
           match={props.match}
         />
       </div>

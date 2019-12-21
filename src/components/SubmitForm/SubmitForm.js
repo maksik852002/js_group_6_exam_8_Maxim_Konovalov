@@ -26,7 +26,7 @@ class PostForm extends Component  {
 
   componentDidUpdate (prevProps) {
     prevProps.match.path!==this.props.match.path &&
-    this.setState({author:'', text:''})
+    this.setState({author:'', text:'', category:CATEGORIES[0]})
   }
 
   valueHandleChanged = e => this.setState({[e.target.name]: e.target.value});
@@ -57,11 +57,11 @@ class PostForm extends Component  {
       btnLabel='Edit'
       placeholder=title
     }
-    return (
+    if(this.state.loading){
+      return  <Spinner/>
+    }
+      return (
       <Fragment>
-        {this.state.loading && 
-          <Spinner/>
-        }
         <h2 className='pt-4 text-center'>{title}</h2>
         <form onSubmit={this.submitHandler} className='border border secondary p-3'>
           <div className="form-group">
